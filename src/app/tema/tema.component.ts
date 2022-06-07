@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { Tema } from '../model/Tema';
-import { TemaService } from '../service-tema.service';
+import { TemaService } from '../service/service-tema.service';
 
 @Component({
   selector: 'app-tema',
