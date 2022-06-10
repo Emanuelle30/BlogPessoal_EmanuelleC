@@ -11,16 +11,28 @@ export class PostagemService {
 
   constructor(
     private http: HttpClient) { }
-    
 
-token = {
-  headers: new HttpHeaders().set('Authorization', environment.token)
-}
-getPostagens(): Observable<Postagem[]>{
-  return this.http.get<Postagem[]>('https://blogpessoalemanuelle.herokuapp.com/postagens', this.token)
-}
 
-postPostagens(postagem: Postagem): Observable<Postagem>{
-  return this.http.post<Postagem>('https://blogpessoalemanuelle.herokuapp.com/postagens', postagem, this.token)
-}
+  token = {
+    headers: new HttpHeaders().set('Authorization', environment.token)
+  }
+  getPostagens(): Observable<Postagem[]> {
+    return this.http.get<Postagem[]>('https://blogpessoalemanuelle.herokuapp.com/postagens', this.token)
+  }
+
+  getByIdPostagens(id: number): Observable<Postagem> {
+    return this.http.get<Postagem>(`https://blogpessoalemanuelle.herokuapp.com/postagens/${id}`, this.token)
+  }
+
+  postPostagens(postagem: Postagem): Observable<Postagem> {
+    return this.http.post<Postagem>('https://blogpessoalemanuelle.herokuapp.com/postagens', postagem, this.token)
+  }
+
+  putPostagens(postagem: Postagem): Observable<Postagem> {
+    return this.http.put<Postagem>('https://blogpessoalemanuelle.herokuapp.com/postagens', postagem, this.token)
+  }
+
+  deletePostagens(id: number) {
+    return this.http.delete(`https://blogpessoalemanuelle.herokuapp.com/postagens/${id}`, this.token)
+  }
 }

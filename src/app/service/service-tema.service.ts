@@ -14,23 +14,23 @@ export class TemaService {
   token = {
     headers: new HttpHeaders().set('Authorization', environment.token)
   }
-  getTema(): Observable<Tema[]>{
+  getTema(): Observable<Tema[]> {
     return this.http.get<Tema[]>('https://blogpessoalemanuelle.herokuapp.com/temas', this.token)
   }
 
-  postTema( tema: Tema): Observable<Tema>{
+  postTema(tema: Tema): Observable<Tema> {
     return this.http.post<Tema>('https://blogpessoalemanuelle.herokuapp.com/temas', tema, this.token)
   }
 
-  putTema( tema: Tema): Observable<Tema>{
+  putTema(tema: Tema): Observable<Tema> {
     return this.http.put<Tema>('https://blogpessoalemanuelle.herokuapp.com/temas', tema, this.token)
   }
 
-  deleteTema(id: number){
+  deleteTema(id: number) {
     return this.http.delete(`https://blogpessoalemanuelle.herokuapp.com/temas/${id}`, this.token)
   }
 
-  getByIdTema(id: number): Observable<Tema>{
+  getByIdTema(id: number): Observable<Tema> {
     return this.http.get<Tema>(`https://blogpessoalemanuelle.herokuapp.com/temas/${id}`, this.token)
   }
 }
