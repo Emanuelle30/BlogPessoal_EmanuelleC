@@ -44,20 +44,19 @@ export class UsuarioEditComponent implements OnInit {
 
   atualizar() {
     this.usuario.tipo = this.tipoUser
-    
+
     if (this.usuario.senha != this.confirmarSenha) {
       alert('As senhas não coincidem!')
     } else {
-      this.authService.cadastrar(this.usuario).subscribe((resp: Usuario) => {
+      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp;
-        this.router.navigate(['/inicio'])
         alert('Usuário atualizado com sucesso! Faça o login novamente!')
-       environment.token = ''
-       environment.nome = ''
-       environment.foto = ''
-       environment.id = 0
+        environment.token = ''
+        environment.nome = ''
+        environment.foto = ''
+        environment.id = 0
 
-       this.router.navigate(['/entrar'])
+        this.router.navigate(['/entrar'])
 
       })
     }
