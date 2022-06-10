@@ -11,7 +11,6 @@ import { environment } from 'src/environments/environment.prod';
 })
 export class UsuarioEditComponent implements OnInit {
 
-
   usuario: Usuario = new Usuario()
   idUsuario: number
   confirmarSenha: string
