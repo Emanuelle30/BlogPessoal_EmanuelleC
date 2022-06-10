@@ -34,9 +34,9 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Descrição</th>
-            <th scope="col" class="text-right">Ações</th>
+            <th scope="col"> ID </th>
+            <th scope="col"> Descrição </th>
+            <th scope="col" class="text-right"> Minhas Ações </th>
           </tr>
         </thead>
         <tbody>
@@ -45,12 +45,8 @@
             <td>{{tema.descricao}}</td>
 
             <td class="d-flex justify-content-end">
-              <button class="btn btn-info mr-3">
-                <a href="">Editar</a>
-              </button>
-              <button class="btn btn-danger">
-                <a href="">Apagar</a>
-              </button>
+              <button class="btn btn-info mr-3" [routerLink]="['/tema-edit', tema.id]"> Editar </button>
+              <button class="btn btn-danger" [routerLink]="['/tema-delete', tema.id]"> Apagar </button>
             </td>
           </tr>
           <tr>
