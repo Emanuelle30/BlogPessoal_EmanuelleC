@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./usuario-edit.component.css']
 })
 export class UsuarioEditComponent implements OnInit {
+  
 
   usuario: Usuario = new Usuario()
   idUsuario: number
