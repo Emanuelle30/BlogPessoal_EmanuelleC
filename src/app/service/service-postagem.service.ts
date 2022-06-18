@@ -8,11 +8,9 @@ import { Postagem } from '../model/Postagem';
   providedIn: 'root'
 })
 export class PostagemService {
-  [x: string]: any;
-
+ 
   constructor(
     private http: HttpClient) { }
-
 
   token = {
     headers: new HttpHeaders().set('Authorization', environment.token)
