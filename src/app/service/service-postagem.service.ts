@@ -8,6 +8,7 @@ import { Postagem } from '../model/Postagem';
   providedIn: 'root'
 })
 export class PostagemService {
+  [x: string]: any;
 
   constructor(
     private http: HttpClient) { }
