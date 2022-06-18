@@ -10,28 +10,36 @@ import { environment } from 'src/environments/environment.prod';
   styleUrls: ['./usuario-edit.component.css']
 })
 export class UsuarioEditComponent implements OnInit {
+  
 
   usuario: Usuario = new Usuario()
-  idUsuario: number
   confirmarSenha: string
   tipoUser: string
 
   constructor(
-    private authService: AuthService,
+    private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) { }
 
   ngOnInit() {
-
-    window.scroll(0, 0)
+    window.scroll(0, 0);
 
     if (environment.token == '') {
-      this.router.navigate(['/entrar'])
+      alert('Para alterar o perfil é preciso estar logado!');
+      this.router.navigate(['/entrar']);
     }
 
-    this.idUsuario = this.route.snapshot.params['id']
-    this.findByIdUsuario(this.idUsuario)
+    let id = this.route.snapshot.params['id'];
+    this.buscarUsuario(id);
+  }
+
+  buscarUsuario(id: number) {
+    this.auth.getByIdUsuario(id).subscribe((resp: Usuario) => {
+      this.usuario = resp;
+      this.usuario.senha = ''
+      
+    });
   }
 
   confirmSenha(event: any) {
@@ -48,7 +56,7 @@ export class UsuarioEditComponent implements OnInit {
     if (this.usuario.senha != this.confirmarSenha) {
       alert('As senhas não coincidem!')
     } else {
-      this.authService.atualizar(this.usuario).subscribe((resp: Usuario) => {
+      this.auth.atualizar(this.usuario).subscribe((resp: Usuario) => {
         this.usuario = resp;
         alert('Usuário atualizado com sucesso! Faça o login novamente!')
         environment.token = ''
@@ -62,7 +70,7 @@ export class UsuarioEditComponent implements OnInit {
     }
   }
   findByIdUsuario(id: number) {
-    this.authService.getByIdUsuario(id).subscribe((resp: Usuario) => {
+    this.auth.getByIdUsuario(id).subscribe((resp: Usuario) => {
       this.usuario = resp
     })
   }
