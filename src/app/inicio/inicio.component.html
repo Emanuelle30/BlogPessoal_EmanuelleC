@@ -42,6 +42,17 @@
                 <div class="tab-pane fade show active" id="todasPostagens" role="tabpanel"
                     aria-labelledby="todasPostagens-tab">
 
+                    <div class="row d-flex justify-content-center mt-5 mb-5">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="titulo" placeholder="Pesquise por título da Postagem" 
+                                [(ngModel)]="tituloPost" (keyup)="findByTituloPostagem()">
+
+
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="card-columns">
                         <div class="card text-center" *ngFor="let postagem of listaPostagens | orderBy : key : reverse">
                             <div class="card-body">
@@ -58,7 +69,7 @@
                 </div>
                 <div class="tab-pane fade" id="minhasPostagens" role="tabpanel" aria-labelledby="minhasPostagens-tab">
 
-                    <div class="card-columns">
+                      <div class="card-columns">
                         <div class="card text-center" *ngFor="let postagem of usuario.postagem | orderBy : key : reverse">
                             <div class="card-body">
                                 <h5 class="card-title m-0">{{postagem.titulo}}</h5>
@@ -73,6 +84,16 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="postagensTema" role="tabpanel" aria-labelledby="postagensTema-tab">
+
+                    <div class="row d-flex justify-content-center mt-5 mb-5">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="titulo" placeholder="Pesquise por Tema" 
+                                [(ngModel)]="nomeTema" (keyup)="findByNomeTema()">
+
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="card-columns" *ngFor="let tema of listaTemas">
                         <div class="card text-center" *ngFor="let postagem of tema.postagem | orderBy : key : reverse">
