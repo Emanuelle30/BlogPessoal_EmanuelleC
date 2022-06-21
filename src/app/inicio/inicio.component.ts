@@ -109,12 +109,12 @@ export class InicioComponent implements OnInit {
       }
     }
 
-    findByNomeTema(){
+    findByDescricaoTema(){
 
       if(this.nomeTema == ''){
         this.getTema()
       } else{
-        this.temaService.getByNomeTema(this.nomeTema).subscribe((resp: Tema[]) =>{
+        this.temaService.getByDescricaoTema(this.nomeTema).subscribe((resp: Tema[]) =>{
           this.listaTemas = resp
         })
       }
